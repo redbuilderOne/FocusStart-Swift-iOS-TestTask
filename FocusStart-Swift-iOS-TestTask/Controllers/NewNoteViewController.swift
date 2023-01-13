@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewNoteViewController: UIViewController, UITextViewDelegate {
 
@@ -17,7 +18,6 @@ class NewNoteViewController: UIViewController, UITextViewDelegate {
         textView.autocorrectionType = UITextAutocorrectionType.no
         textView.keyboardType = UIKeyboardType.default
         textView.returnKeyType = UIReturnKeyType.done
-        textView.text = "Введите текст заметки".localized()
         return textView
     }()
 
@@ -38,7 +38,17 @@ class NewNoteViewController: UIViewController, UITextViewDelegate {
     }
 
     @objc private func doneButtonTapped() {
-        print("doneButtonTapped")
+        let context = CoreDataSaver.shared.loadPersistentContainer()
+        guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: context) else { return }
+
+        let newNote = CoreDataSaver.shared.createCoreDataNewNote(noteString: noteTextView.text, entity: entity, insertInto: context)
+        do {
+            try context.save()
+            HomeViewController.notes.append(newNote)
+            print("New Note: \(newNote.noteText ?? "") is saved")
+        } catch {
+            print("Can't save the context")
+        }
     }
 
     deinit {

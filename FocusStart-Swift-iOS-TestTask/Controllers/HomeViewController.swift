@@ -11,7 +11,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
 
-    private var notes: [Note] = []
+    static var notes: [Note] = []
 
     private let notesTableView: UITableView = {
         let tableView = UITableView()
@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(notesTableView)
+        FirstLoadChecker.shared.firstLoadTableCheck()
         notesTableView.dataSource = self
         notesTableView.frame = view.bounds
         setupNavigationBar()
@@ -48,12 +49,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return HomeViewController.notes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as? NotesTableViewCell else { fatalError() }
-        cell.noteTextLabel.text = "title"
+        cell.configure(with: HomeViewController.notes[indexPath.row])
+
+        DispatchQueue.main.async { [weak self] in
+            self?.notesTableView.reloadData()
+        }
         return cell
     }
 
