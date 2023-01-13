@@ -28,10 +28,13 @@ class HomeViewController: UIViewController {
         setupNavigationBar()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        notesTableView.reloadData()
+    }
+
     private func setupNavigationBar() {
         title = "Все заметки".localized()
-        navigationItem.leftBarButtonItem = self.editButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .label
         let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action:  #selector(addNewNote))
         navigationItem.rightBarButtonItem = addItem
         navigationItem.rightBarButtonItem?.tintColor = .label
@@ -55,16 +58,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as? NotesTableViewCell else { fatalError() }
         cell.configure(with: HomeViewController.notes[indexPath.row])
-
-        DispatchQueue.main.async { [weak self] in
-            self?.notesTableView.reloadData()
-        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as? NotesTableViewCell else { fatalError() }
-        print(cell)
+        print("didSelectRowAt")
     }
 
     //MARK: УДАЛЕНИЕ
@@ -75,15 +74,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-
+            CoreDataManager.shared.deleteNoteFromCoreData(note: HomeViewController.notes[indexPath.row])
             HomeViewController.notes.remove(at: indexPath.row)
             notesTableView.deleteRows(at: [indexPath], with: .fade)
-            CoreDataManager.shared.deleteNoteFromCoreData(note: HomeViewController.notes[indexPath.row])
-
-            DispatchQueue.main.async { [weak self] in
-                self?.notesTableView.reloadData()
-            }
-
+            notesTableView.reloadData()
         }
     }
 }

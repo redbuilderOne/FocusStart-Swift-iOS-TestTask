@@ -19,7 +19,6 @@ class CoreDataManager {
     }
 
     func createCoreDataNewNote(controller: HomeViewController? = nil, noteString: String, entity: NSEntityDescription, insertInto: NSManagedObjectContext) -> Note {
-
         let newNote = Note(entity: entity, insertInto: loadPersistentContainer())
         newNote.noteText = noteString
         return newNote

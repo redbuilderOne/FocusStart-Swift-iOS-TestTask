@@ -20,6 +20,7 @@
 		FF97CBA129719E79003D4AE4 /* FirstLoadChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */; };
 		FF97CBA329719EEC003D4AE4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA229719EEC003D4AE4 /* CoreDataManager.swift */; };
 		FF97CBAA2971A3D0003D4AE4 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA92971A3D0003D4AE4 /* NewNoteViewController.swift */; };
+		FF97CBAE2971E7C7003D4AE4 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBAD2971E7C7003D4AE4 /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoadChecker.swift; sourceTree = "<group>"; };
 		FF97CBA229719EEC003D4AE4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FF97CBA92971A3D0003D4AE4 /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		FF97CBAD2971E7C7003D4AE4 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */,
 				FF97CBA229719EEC003D4AE4 /* CoreDataManager.swift */,
+				FF97CBAD2971E7C7003D4AE4 /* Alerts.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				FF97CBA129719E79003D4AE4 /* FirstLoadChecker.swift in Sources */,
 				FF97CBAA2971A3D0003D4AE4 /* NewNoteViewController.swift in Sources */,
 				FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */,
+				FF97CBAE2971E7C7003D4AE4 /* Alerts.swift in Sources */,
 				FF97CB9B29717946003D4AE4 /* Localisation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
