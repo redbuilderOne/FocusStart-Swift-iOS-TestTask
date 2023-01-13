@@ -12,7 +12,7 @@ class FirstLoadChecker {
 
     static let shared = FirstLoadChecker()
 
-    var firstLoad = true
+    private var firstLoad = true
 
     init(note: Note? = nil) {
     }
@@ -21,10 +21,10 @@ class FirstLoadChecker {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func firstLoadTableCheck() {
+    func check() {
         if firstLoad {
             firstLoad = false
-            let context = CoreDataSaver.shared.loadPersistentContainer()
+            let context = CoreDataManager.shared.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
 
             do {

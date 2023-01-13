@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(notesTableView)
-        FirstLoadChecker.shared.firstLoadTableCheck()
+        FirstLoadChecker.shared.check()
         notesTableView.dataSource = self
         notesTableView.frame = view.bounds
         setupNavigationBar()
@@ -64,6 +64,27 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as? NotesTableViewCell else { fatalError() }
+        print(cell)
+    }
+
+    //MARK: УДАЛЕНИЕ
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+
+            HomeViewController.notes.remove(at: indexPath.row)
+            notesTableView.deleteRows(at: [indexPath], with: .fade)
+            CoreDataManager.shared.deleteNoteFromCoreData(note: HomeViewController.notes[indexPath.row])
+
+            DispatchQueue.main.async { [weak self] in
+                self?.notesTableView.reloadData()
+            }
+
+        }
     }
 }
 

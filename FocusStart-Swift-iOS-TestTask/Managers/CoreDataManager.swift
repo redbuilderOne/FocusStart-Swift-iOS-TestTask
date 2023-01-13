@@ -8,9 +8,9 @@
 import UIKit
 import CoreData
 
-class CoreDataSaver {
+class CoreDataManager {
 
-    static let shared = CoreDataSaver()
+    static let shared = CoreDataManager()
 
     func loadPersistentContainer() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -23,7 +23,18 @@ class CoreDataSaver {
         let newNote = Note(entity: entity, insertInto: loadPersistentContainer())
         newNote.noteText = noteString
         return newNote
+    }
 
+    func deleteNoteFromCoreData(note: Note) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+
+        do {
+            appDelegate.persistentContainer.viewContext.delete(note)
+            try appDelegate.persistentContainer.viewContext.save()
+            print("\(note.noteText ?? "") is deleted from CoreData")
+        } catch {
+            print("Deletion is failed")
+        }
     }
 
 }

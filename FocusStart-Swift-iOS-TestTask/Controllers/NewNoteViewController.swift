@@ -38,10 +38,10 @@ class NewNoteViewController: UIViewController, UITextViewDelegate {
     }
 
     @objc private func doneButtonTapped() {
-        let context = CoreDataSaver.shared.loadPersistentContainer()
+        let context = CoreDataManager.shared.loadPersistentContainer()
         guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: context) else { return }
 
-        let newNote = CoreDataSaver.shared.createCoreDataNewNote(noteString: noteTextView.text, entity: entity, insertInto: context)
+        let newNote = CoreDataManager.shared.createCoreDataNewNote(noteString: noteTextView.text, entity: entity, insertInto: context)
         do {
             try context.save()
             HomeViewController.notes.append(newNote)
@@ -49,6 +49,8 @@ class NewNoteViewController: UIViewController, UITextViewDelegate {
         } catch {
             print("Can't save the context")
         }
+
+        navigationController?.popViewController(animated: true)
     }
 
     deinit {
