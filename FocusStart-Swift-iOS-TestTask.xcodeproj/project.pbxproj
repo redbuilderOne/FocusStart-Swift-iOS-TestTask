@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		FF97CB7F2971747A003D4AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */; };
-		FF97CB832971747A003D4AE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB822971747A003D4AE4 /* ViewController.swift */; };
+		FF97CB832971747A003D4AE4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB822971747A003D4AE4 /* HomeViewController.swift */; };
 		FF97CB892971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB872971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld */; };
 		FF97CB8B2971747B003D4AE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF97CB8A2971747B003D4AE4 /* Assets.xcassets */; };
 		FF97CB8E2971747B003D4AE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF97CB8C2971747B003D4AE4 /* LaunchScreen.storyboard */; };
 		FF97CB96297175CE003D4AE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB95297175CE003D4AE4 /* MainTabBarController.swift */; };
+		FF97CB982971781D003D4AE4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */; };
+		FF97CB9B29717946003D4AE4 /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB9A29717946003D4AE4 /* Localisation.swift */; };
+		FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF97CB7B2971747A003D4AE4 /* FocusStart-Swift-iOS-TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FocusStart-Swift-iOS-TestTask.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF97CB822971747A003D4AE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF97CB822971747A003D4AE4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF97CB882971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusStart_Swift_iOS_TestTask.xcdatamodel; sourceTree = "<group>"; };
 		FF97CB8A2971747B003D4AE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF97CB8D2971747B003D4AE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF97CB8F2971747B003D4AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF97CB95297175CE003D4AE4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		FF97CB9A29717946003D4AE4 /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +63,25 @@
 			isa = PBXGroup;
 			children = (
 				FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */,
-				FF97CB822971747A003D4AE4 /* ViewController.swift */,
+				FF97CB822971747A003D4AE4 /* HomeViewController.swift */,
+				FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */,
 				FF97CB95297175CE003D4AE4 /* MainTabBarController.swift */,
+				FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */,
+				FF97CB992971793B003D4AE4 /* Extensions */,
 				FF97CB8A2971747B003D4AE4 /* Assets.xcassets */,
 				FF97CB8C2971747B003D4AE4 /* LaunchScreen.storyboard */,
 				FF97CB8F2971747B003D4AE4 /* Info.plist */,
 				FF97CB872971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld */,
 			);
 			path = "FocusStart-Swift-iOS-TestTask";
+			sourceTree = "<group>";
+		};
+		FF97CB992971793B003D4AE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FF97CB9A29717946003D4AE4 /* Localisation.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +155,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF97CB892971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld in Sources */,
-				FF97CB832971747A003D4AE4 /* ViewController.swift in Sources */,
+				FF97CB832971747A003D4AE4 /* HomeViewController.swift in Sources */,
 				FF97CB96297175CE003D4AE4 /* MainTabBarController.swift in Sources */,
 				FF97CB7F2971747A003D4AE4 /* AppDelegate.swift in Sources */,
+				FF97CB982971781D003D4AE4 /* NotesTableViewController.swift in Sources */,
+				FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */,
+				FF97CB9B29717946003D4AE4 /* Localisation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
