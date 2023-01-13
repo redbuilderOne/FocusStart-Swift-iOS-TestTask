@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
         view.addSubview(notesTableView)
         FirstLoadChecker.shared.check()
         notesTableView.dataSource = self
+        notesTableView.delegate = self
         notesTableView.frame = view.bounds
         setupNavigationBar()
     }
@@ -62,11 +63,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as? NotesTableViewCell else { fatalError() }
-        print("didSelectRowAt")
+        Alert.shared.noteTextEditAction(on: self, note: HomeViewController.notes[indexPath.row], tableView: notesTableView)
     }
-
-    //MARK: УДАЛЕНИЕ
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -80,5 +78,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             notesTableView.reloadData()
         }
     }
-}
 
+}

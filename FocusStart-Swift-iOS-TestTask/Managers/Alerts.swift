@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct Alert {
 
@@ -17,6 +18,39 @@ struct Alert {
         viewController.present(alert, animated: true)
     }
 
+    func noteTextEditAction(on viewController: UIViewController, note: Note, tableView: UITableView) {
+        let actionController = UIAlertController(title: "".localized(), message: "Измените заметку".localized(), preferredStyle: .alert)
+
+        actionController.addTextField{ (newText) in
+            newText.text = note.noteText
+        }
+
+        let cancelAction = UIAlertAction(title: "Отмена".localized(), style: .cancel, handler: { (action) -> Void in
+            viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+        })
+
+        let okayAction = UIAlertAction(title: "Ок".localized(), style: .default, handler: { (action) -> Void in
+            note.noteText = (actionController.textFields?.first?.text)!
+
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+                do {
+                    try context.save()
+                } catch {
+                    print("Can't save the context")
+                }
+
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+
+            viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+        })
+
+        actionController.addAction(okayAction)
+        actionController.addAction(cancelAction)
+        viewController.present(actionController, animated: true, completion: nil)
+    }
+
 }
-
-
