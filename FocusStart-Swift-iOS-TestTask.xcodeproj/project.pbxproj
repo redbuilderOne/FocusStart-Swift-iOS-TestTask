@@ -16,6 +16,10 @@
 		FF97CB982971781D003D4AE4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */; };
 		FF97CB9B29717946003D4AE4 /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB9A29717946003D4AE4 /* Localisation.swift */; };
 		FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */; };
+		FF97CB9F29719CB4003D4AE4 /* NoteEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB9E29719CB4003D4AE4 /* NoteEditAlert.swift */; };
+		FF97CBA129719E79003D4AE4 /* FirstLoadChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */; };
+		FF97CBA329719EEC003D4AE4 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA229719EEC003D4AE4 /* CoreDataSaver.swift */; };
+		FF97CBAA2971A3D0003D4AE4 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CBA92971A3D0003D4AE4 /* NewNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		FF97CB9A29717946003D4AE4 /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
 		FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		FF97CB9E29719CB4003D4AE4 /* NoteEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditAlert.swift; sourceTree = "<group>"; };
+		FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoadChecker.swift; sourceTree = "<group>"; };
+		FF97CBA229719EEC003D4AE4 /* CoreDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
+		FF97CBA92971A3D0003D4AE4 /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */,
-				FF97CB822971747A003D4AE4 /* HomeViewController.swift */,
+				FF97CBA82971A3C1003D4AE4 /* Controllers */,
+				FF97CBA429719EF8003D4AE4 /* Managers */,
+				FF97CB9E29719CB4003D4AE4 /* NoteEditAlert.swift */,
 				FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */,
 				FF97CB95297175CE003D4AE4 /* MainTabBarController.swift */,
 				FF97CB972971781D003D4AE4 /* NotesTableViewController.swift */,
@@ -82,6 +92,24 @@
 				FF97CB9A29717946003D4AE4 /* Localisation.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF97CBA429719EF8003D4AE4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */,
+				FF97CBA229719EEC003D4AE4 /* CoreDataSaver.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FF97CBA82971A3C1003D4AE4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF97CB822971747A003D4AE4 /* HomeViewController.swift */,
+				FF97CBA92971A3D0003D4AE4 /* NewNoteViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF97CBA329719EEC003D4AE4 /* CoreDataSaver.swift in Sources */,
 				FF97CB892971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld in Sources */,
 				FF97CB832971747A003D4AE4 /* HomeViewController.swift in Sources */,
 				FF97CB96297175CE003D4AE4 /* MainTabBarController.swift in Sources */,
 				FF97CB7F2971747A003D4AE4 /* AppDelegate.swift in Sources */,
 				FF97CB982971781D003D4AE4 /* NotesTableViewController.swift in Sources */,
+				FF97CB9F29719CB4003D4AE4 /* NoteEditAlert.swift in Sources */,
+				FF97CBA129719E79003D4AE4 /* FirstLoadChecker.swift in Sources */,
+				FF97CBAA2971A3D0003D4AE4 /* NewNoteViewController.swift in Sources */,
 				FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */,
 				FF97CB9B29717946003D4AE4 /* Localisation.swift in Sources */,
 			);
