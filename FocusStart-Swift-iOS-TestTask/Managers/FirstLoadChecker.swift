@@ -12,7 +12,11 @@ class FirstLoadChecker {
 
     static let shared = FirstLoadChecker()
 
-    private var firstLoad = true
+    enum SettingsKeys: String {
+        case isFirstLoad
+    }
+
+    let defaults = UserDefaults.standard
 
     init(note: Note? = nil) {
     }
@@ -22,20 +26,14 @@ class FirstLoadChecker {
     }
 
     func check() {
-        if firstLoad {
-            firstLoad = false
-            let context = CoreDataManager.shared.loadPersistentContainer()
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-
-            do {
-                let results: NSArray = try context.fetch(request) as NSArray
-                for result in results {
-                    let note = result as! Note
-                    HomeViewController.notes.append(note)
-                }
-            } catch {
-                print("Fetch failed")
-            }
+        var initialStateLaunch = defaults.bool(forKey: SettingsKeys.isFirstLoad.rawValue)
+        if !initialStateLaunch {
+            initialStateLaunch = true
+            defaults.set(initialStateLaunch, forKey: SettingsKeys.isFirstLoad.rawValue)
+            CoreDataManager.shared.addHelloNote()
+        } else {
+            defaults.set(initialStateLaunch, forKey: SettingsKeys.isFirstLoad.rawValue)
+            CoreDataManager.shared.fetchCoreData()
         }
     }
 

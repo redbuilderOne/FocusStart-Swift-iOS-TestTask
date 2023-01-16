@@ -38,24 +38,7 @@ class NewNoteViewController: UIViewController, UITextViewDelegate {
     }
 
     @objc private func doneButtonTapped() {
-        let context = CoreDataManager.shared.loadPersistentContainer()
-        guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: context) else { return }
-
-        if !noteTextView.text.isEmpty {
-            let newNote = CoreDataManager.shared.createCoreDataNewNote(noteString: noteTextView.text, entity: entity, insertInto: context)
-            print("New Note: \(newNote.noteText ?? "") is saved")
-        do {
-            try context.save()
-            HomeViewController.notes.append(newNote)
-        } catch {
-            print("Can't save the context")
-        }
-
-        } else {
-            Alert.shared.isEmptyCheck(on: self, message: "Заметка не может быть пустой")
-            return
-        }
-
+        CoreDataManager.shared.saveNewNoteToCoreData(noteTextView: noteTextView, viewController: self)
         navigationController?.popViewController(animated: true)
     }
 
