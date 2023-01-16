@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc func addNewNote() {
-        let newNoteViewController = NewNoteViewController()
+        let newNoteViewController = NoteViewController()
         show(newNoteViewController, sender: self)
     }
 
@@ -62,7 +62,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Alert.shared.noteTextEditAction(on: self, note: HomeViewController.notes[indexPath.row], tableView: notesTableView)
+//        Alert.shared.noteTextEditAction(on: self, note: HomeViewController.notes[indexPath.row], tableView: notesTableView)
+        show(NoteViewController(note: HomeViewController.notes[indexPath.row], selectedIndex: indexPath.row), sender: self)
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
