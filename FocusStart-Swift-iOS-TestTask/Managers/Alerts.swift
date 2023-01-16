@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 struct Alert {
 
@@ -32,8 +31,7 @@ struct Alert {
         let okayAction = UIAlertAction(title: "Ок".localized(), style: .default, handler: { (action) -> Void in
             note.noteText = (actionController.textFields?.first?.text)!
 
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let context = CoreDataManager.shared.loadPersistentContainer()
 
                 do {
                     try context.save()

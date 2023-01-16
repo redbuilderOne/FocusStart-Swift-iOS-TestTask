@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 class NotesTableViewCell: UITableViewCell {
 
@@ -14,7 +13,7 @@ class NotesTableViewCell: UITableViewCell {
         return NSStringFromClass(self)
     }
 
-    var noteTextLabel: UILabel = {
+    private var noteTextLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
@@ -29,10 +28,6 @@ class NotesTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc private func didTapEditButton() {
-        print("tap")
     }
 
     override func layoutSubviews() {

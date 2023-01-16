@@ -58,18 +58,25 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     }
 
     @objc private func doneButtonTapped() {
-        CoreDataManager.shared.saveNewNoteToCoreData(noteTextView: noteTextView, viewController: self)
+        var createdDate: Date?
         switch note {
         case nil:
-            print("case nil")
+            print("note is nil")
         default:
             if let note, let selectedIndex {
-                guard let previousNote = findPreviosNote(string: note.noteText ?? "") else { return }
+                guard let previousNote = findPreviosNote(string: note.noteText ?? "") else {
+                    print("не удалось найти предыдущую заметку")
+                    return
+                }
+                createdDate = previousNote.createdDate
                 CoreDataManager.shared.deleteNoteFromCoreData(note: previousNote)
                 HomeViewController.notes.remove(at: selectedIndex)
             }
-            print("default")
         }
+        if createdDate == nil {
+            createdDate = Date()
+        }
+        CoreDataManager.shared.saveNewNoteToCoreDataFromTextView(noteTextView: noteTextView, createdDate: createdDate, editedDate: Date(), viewController: self)
         navigationController?.popViewController(animated: true)
     }
 

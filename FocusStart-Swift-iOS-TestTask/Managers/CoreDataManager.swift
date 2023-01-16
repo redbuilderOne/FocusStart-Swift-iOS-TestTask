@@ -12,7 +12,7 @@ struct CoreDataManager {
 
     static let shared = CoreDataManager()
 
-    private func loadPersistentContainer() -> NSManagedObjectContext {
+    func loadPersistentContainer() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         return context
@@ -28,23 +28,6 @@ struct CoreDataManager {
             try context.save()
         } catch {
             print("Can't save the context")
-        }
-    }
-
-    func saveNewNoteToCoreData(noteTextView: UITextView? = nil, viewController: UIViewController? = nil) {
-        let context = self.loadPersistentContainer()
-        let entity = loadEntity(context: context)
-
-        if let noteTextView, let viewController {
-            if !noteTextView.text.isEmpty {
-                let newNote = self.createCoreDataNewNote(noteString: noteTextView.text, entity: entity, insertInto: context)
-                tryContextSave(context: context)
-                print("New Note: \(newNote.noteText ?? "") is saved")
-                HomeViewController.notes.append(newNote)
-            } else {
-                Alert.shared.isEmptyCheck(on: viewController, message: "Заметка не может быть пустой")
-                return
-            }
         }
     }
 
@@ -71,10 +54,29 @@ struct CoreDataManager {
         }
     }
 
-    func createCoreDataNewNote(controller: HomeViewController? = nil, noteString: String, entity: NSEntityDescription, insertInto: NSManagedObjectContext) -> Note {
+    func createCoreDataNewNote(controller: HomeViewController? = nil, noteString: String, createdDate: Date? = nil, editedDate: Date? = nil, entity: NSEntityDescription, insertInto: NSManagedObjectContext) -> Note {
         let newNote = Note(entity: entity, insertInto: loadPersistentContainer())
         newNote.noteText = noteString
+        newNote.createdDate = createdDate
+        newNote.editedDate = editedDate
         return newNote
+    }
+
+    func saveNewNoteToCoreDataFromTextView(noteTextView: UITextView? = nil, createdDate: Date? = nil, editedDate: Date? = nil, viewController: UIViewController? = nil) {
+        let context = self.loadPersistentContainer()
+        let entity = loadEntity(context: context)
+
+        if let noteTextView, let viewController {
+            if !noteTextView.text.isEmpty {
+                let newNote = self.createCoreDataNewNote(noteString: noteTextView.text, createdDate: createdDate, editedDate: editedDate, entity: entity, insertInto: context)
+                tryContextSave(context: context)
+                print("Note: \(newNote.noteText ?? "") is created at \(String(describing: newNote.createdDate)) saved at \(String(describing: newNote.editedDate))")
+                HomeViewController.notes.append(newNote)
+            } else {
+                Alert.shared.isEmptyCheck(on: viewController, message: "Заметка не может быть пустой")
+                return
+            }
+        }
     }
 
     func deleteNoteFromCoreData(note: Note) {
