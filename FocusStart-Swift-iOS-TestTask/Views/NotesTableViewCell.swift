@@ -21,7 +21,7 @@ class NotesTableViewCell: UITableViewCell {
         return label
     }()
 
-    private var editedDate: UILabel = {
+    private var editedDateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .thin)
         label.textColor = .label
@@ -32,7 +32,7 @@ class NotesTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(noteTextLabel)
-        contentView.addSubview(editedDate)
+        contentView.addSubview(editedDateLabel)
     }
 
     required init?(coder: NSCoder) {
@@ -42,18 +42,12 @@ class NotesTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         noteTextLabel.frame = CGRect(x: 20, y: -5, width: contentView.frame.size.width - 20, height: contentView.frame.size.height - 6)
-        editedDate.frame = CGRect(x: 20, y: 10, width: contentView.frame.size.width - 20, height: contentView.frame.size.height - 6)
-    }
-
-    private func formatDate() -> DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY, MMM d, HH:mm:ss"
-        return dateFormatter
+        editedDateLabel.frame = CGRect(x: 20, y: 10, width: contentView.frame.size.width - 20, height: contentView.frame.size.height - 6)
     }
 
     public func configure(with note: Note) {
         self.noteTextLabel.text = note.noteText
-        self.editedDate.text = formatDate().string(from: note.editedDate ?? Date())
+        self.editedDateLabel.text = DateConverter.shared.formatDate().string(from: note.editedDate ?? Date())
     }
 
 }

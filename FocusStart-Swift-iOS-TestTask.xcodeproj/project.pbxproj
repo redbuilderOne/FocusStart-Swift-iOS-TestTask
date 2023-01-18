@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF40EF5F297893A9008FF9AD /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF40EF5E297893A9008FF9AD /* DateConverter.swift */; };
 		FF97CB7F2971747A003D4AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */; };
 		FF97CB832971747A003D4AE4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB822971747A003D4AE4 /* HomeViewController.swift */; };
 		FF97CB892971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF97CB872971747A003D4AE4 /* FocusStart_Swift_iOS_TestTask.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF40EF5E297893A9008FF9AD /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		FF97CB7B2971747A003D4AE4 /* FocusStart-Swift-iOS-TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FocusStart-Swift-iOS-TestTask.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF97CB822971747A003D4AE4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				FF97CBA029719E79003D4AE4 /* FirstLoadChecker.swift */,
 				FF97CBA229719EEC003D4AE4 /* CoreDataManager.swift */,
 				FF97CBAD2971E7C7003D4AE4 /* Alerts.swift */,
+				FF40EF5E297893A9008FF9AD /* DateConverter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				FF97CB832971747A003D4AE4 /* HomeViewController.swift in Sources */,
 				FF97CB96297175CE003D4AE4 /* MainTabBarController.swift in Sources */,
 				FF97CB7F2971747A003D4AE4 /* AppDelegate.swift in Sources */,
+				FF40EF5F297893A9008FF9AD /* DateConverter.swift in Sources */,
 				FF97CBA129719E79003D4AE4 /* FirstLoadChecker.swift in Sources */,
 				FF97CBAA2971A3D0003D4AE4 /* NoteViewController.swift in Sources */,
 				FF97CB9D29717A0B003D4AE4 /* NotesTableViewCell.swift in Sources */,

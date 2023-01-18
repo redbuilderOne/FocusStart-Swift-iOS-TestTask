@@ -24,6 +24,16 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         return textView
     }()
 
+    private var editedDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .thin)
+        label.textColor = .label
+        label.textAlignment = .center
+        label.text = "editedDateLabel"
+        label.isHidden = true
+        return label
+    }()
+
     init(note: Note? = nil, selectedIndex: Int? = nil) {
         self.note = note
         self.selectedIndex = selectedIndex
@@ -37,15 +47,52 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(noteTextView)
+        view.addSubview(editedDateLabel)
         noteTextView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         setupNavigationBar()
         noteTextView.delegate = self
         loadSelectedNoteText()
+        setSwipesGestureSettings()
+    }
+
+    private func animateFrames(swipeDown: Bool) {
+        if swipeDown {
+            noteTextView.frame = CGRect(x: 0, y: 120, width: view.frame.width, height: view.frame.height)
+            editedDateLabel.isHidden = false
+            editedDateLabel.frame = CGRect(x: 0, y: 90, width: view.frame.width, height: 30)
+        } else {
+            noteTextView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+            editedDateLabel.isHidden = true
+        }
+    }
+
+    private func setSwipesGestureSettings() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToUpSwipeGesture))
+
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+
+        view.addGestureRecognizer(swipeDown)
+        view.addGestureRecognizer(swipeUp)
+    }
+
+    @objc private func respondToDownSwipeGesture() {
+        UILabel.animate(withDuration: 0.3) {
+            self.animateFrames(swipeDown: true)
+        }
+    }
+
+    @objc private func respondToUpSwipeGesture() {
+        UILabel.animate(withDuration: 0.3) {
+            self.animateFrames(swipeDown: false)
+        }
     }
 
     private func loadSelectedNoteText() {
         if note != nil {
             noteTextView.text = note?.noteText
+            editedDateLabel.text = DateConverter.shared.formatDate().string(from: note?.editedDate ?? Date())
         }
     }
 
