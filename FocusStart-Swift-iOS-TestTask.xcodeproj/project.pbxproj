@@ -49,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF40EF5A297881AD008FF9AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF9071ED2975EEBB00CF1EE0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +89,7 @@
 				FF97CB7E2971747A003D4AE4 /* AppDelegate.swift */,
 				FF97CBA82971A3C1003D4AE4 /* Controllers */,
 				FF97CBA429719EF8003D4AE4 /* Managers */,
-				FF97CB9C29717A0B003D4AE4 /* NotesTableViewCell.swift */,
+				FF40EF5A297881AD008FF9AD /* Views */,
 				FF97CB992971793B003D4AE4 /* Extensions */,
 				FF97CB8A2971747B003D4AE4 /* Assets.xcassets */,
 				FF97CB8F2971747B003D4AE4 /* Info.plist */,

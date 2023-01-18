@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     private let notesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(NotesTableViewCell.self, forCellReuseIdentifier: NotesTableViewCell.identifier)
+        tableView.rowHeight = 44
         return tableView
     }()
 
