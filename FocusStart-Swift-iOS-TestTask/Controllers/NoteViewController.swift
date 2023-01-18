@@ -58,8 +58,8 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     private func animateFrames(swipeDown: Bool) {
         if swipeDown {
             noteTextView.frame = CGRect(x: 0, y: 120, width: view.frame.width, height: view.frame.height)
-            editedDateLabel.isHidden = false
             editedDateLabel.frame = CGRect(x: 0, y: 90, width: view.frame.width, height: 30)
+            editedDateLabel.isHidden = false
         } else {
             noteTextView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
             editedDateLabel.isHidden = true
