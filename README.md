@@ -1,7 +1,12 @@
 # FocusStart-Swift-iOS-TestTask
 
-Preview
+Simple NotesApp
 
+UIKit
+CoreData
+UserDefaults
+
+Preview
 ![Simulator Screen Shot - iPhone 11 - 2023-01-18 at 22 21 28](https://user-images.githubusercontent.com/95698427/213274856-35043432-9cf1-4772-8e84-0eae3793120a.png)
 ![Simulator Screen Shot - iPhone 11 - 2023-01-18 at 22 21 21](https://user-images.githubusercontent.com/95698427/213274860-0c7eca5e-9504-4f04-bbc6-db4afe35878b.png)
 
