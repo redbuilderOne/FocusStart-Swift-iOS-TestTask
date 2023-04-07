@@ -6,7 +6,7 @@ UIKit
 CoreData
 UserDefaults
 
-Preview
+## Preview
 ![Simulator Screen Recording - iPhone Xr - 2023-04-07 at 18 21 46](https://user-images.githubusercontent.com/95698427/230634166-d4a56ca9-6a21-41bb-883c-4f57e5057263.gif)
 ![Simulator Screen Shot - iPhone 11 - 2023-01-18 at 22 21 21](https://user-images.githubusercontent.com/95698427/213274860-0c7eca5e-9504-4f04-bbc6-db4afe35878b.png)
 
